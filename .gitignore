@@ -1,0 +1,8 @@
+arm/o.le-v7-g/beRail
+.DS_Store
+*.o
+*.0
+*.so
+*.1
+*.bar
+*.sym
