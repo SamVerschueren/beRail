@@ -6,3 +6,4 @@ arm/o.le-v7-g/beRail
 *.1
 *.bar
 *.sym
+.preview*
