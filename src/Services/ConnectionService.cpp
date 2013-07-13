@@ -48,6 +48,8 @@ void ConnectionService::findConnectionBy(const QString &from, const QString &to,
     QString timeSelector = type==0?"depart":"arrive";
     QString lang = tr("nl");
 
+    qDebug() << "http://api.irail.be/connections/?format=json&to=" + to + "&from=" + from + "&date=" + urlDate + "&time=" + urlTime + "&timeSel=" + timeSelector + "&lang=" + lang;
+
     // Create a new network request and set the url.
     QNetworkRequest request;
     request.setUrl(QUrl("http://api.irail.be/connections/?format=json&to=" + to + "&from=" + from + "&date=" + urlDate + "&time=" + urlTime + "&timeSel=" + timeSelector + "&lang=" + lang));

@@ -9,7 +9,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/Services/ConnectionService.cpp" line="85"/>
+        <location filename="../src/Services/ConnectionService.cpp" line="87"/>
         <source>Er is geen netwerk beschikbaar.</source>
         <translation type="unfinished"></translation>
     </message>

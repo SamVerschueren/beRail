@@ -9,7 +9,6 @@
 
 DisruptionsViewModel::~DisruptionsViewModel() {
     delete dataModel;
-    delete service;
 }
 
 void DisruptionsViewModel::setDisruptionService(DisruptionService* service) {

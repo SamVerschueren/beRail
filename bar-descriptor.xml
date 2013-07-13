@@ -43,7 +43,7 @@
          An updated version of application must have a versionNumber value higher than the previous version. Required. -->
     <versionNumber>1.0.2</versionNumber>
     <packageLocale>en,nl,fr,de</packageLocale>
-    <buildId>0</buildId>
+    <buildId>1</buildId>
 
     <!-- Fourth digit segment of the package version. First three segments are taken from the 
          <versionNumber> element.  Must be an integer from 0 to 2^16-1 -->

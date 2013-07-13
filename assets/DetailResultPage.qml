@@ -16,7 +16,7 @@ Page {
                 layout: StackLayout {
                     orientation: LayoutOrientation.LeftToRight
                 }
-    
+
                 ImageView {
                     imageSource: "asset:///images/start.png"
                     preferredHeight: 60
@@ -29,11 +29,11 @@ Page {
                         spaceQuota: 1.0
                     }
                 }
-    
+
                 Label {
                     text: Qt.formatDateTime(routeVM.selectedItem.departure.time, "hh:mm")
                 }
-    
+
                 Label {
                     text: "+" + (routeVM.selectedItem.departure.delay / 60)
                     textStyle.color: Color.Red

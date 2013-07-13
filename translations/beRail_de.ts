@@ -9,7 +9,7 @@
         <translation>de</translation>
     </message>
     <message>
-        <location filename="../src/Services/ConnectionService.cpp" line="85"/>
+        <location filename="../src/Services/ConnectionService.cpp" line="87"/>
         <source>Er is geen netwerk beschikbaar.</source>
         <translation>Es gibt kein Netz verfügbar.</translation>
     </message>

@@ -12,7 +12,6 @@
  */
 FavoritesViewModel::~FavoritesViewModel() {
     delete dataModel;
-    delete favoriteService;
 }
 
 /**
