@@ -16,29 +16,31 @@ class StationViewModel : public QObject {
 	Q_OBJECT
 
 	Q_PROPERTY(QString filter READ getFilter WRITE setFilter NOTIFY filterChanged FINAL)
-	Q_PROPERTY(GroupDataModel* dataModel READ getDataModel)
+	Q_PROPERTY(GroupDataModel* dataModel READ getDataModel NOTIFY dataModelChanged FINAL)
 
 	Q_SIGNALS:
 	    void filterChanged(const QString &filter);
+	    void dataModelChanged(GroupDataModel* dataModel);
 
 	private:
 	    QString filter;
 	    GroupDataModel *dataModel;
 
 	    QList<QString> stations;
-		StationService stationService;
+		StationService* stationService;
 
 		void applyFilter();
 
 	public:
-		StationViewModel(QObject *parent=0) : QObject(parent), stationService(this) {
-		    dataModel = new GroupDataModel(QStringList() << "name");
-		}
+		StationViewModel();
 		~StationViewModel();
 
 		QString getFilter() const;
 		void setFilter(const QString &filter);
+
 		GroupDataModel* getDataModel();
+
+		Q_INVOKABLE void loadStations();
 
 	private slots:
 	    void findAllStationsCompleted(const QList<QString> &stations);

@@ -20,6 +20,7 @@ using namespace bb::data;
  * @param parent The parent of this object. Most of the time the object that created this object.
  */
 ConnectionService::ConnectionService(QObject *parent=0) : QObject(parent) {
+    this->settings = new QSettings("samver", "beRail", this);
     this->networkAccessManager = new QNetworkAccessManager(this);
 
     // Connect with the finished signal of the networkAccessManager
@@ -31,6 +32,7 @@ ConnectionService::ConnectionService(QObject *parent=0) : QObject(parent) {
  */
 ConnectionService::~ConnectionService() {
     delete networkAccessManager;
+    delete settings;
 }
 
 /**
@@ -46,7 +48,7 @@ void ConnectionService::findConnectionBy(const QString &from, const QString &to,
     QString urlDate = dateTime.toString("ddMMyy");
     QString urlTime = dateTime.toString("hhmm");
     QString timeSelector = type==0?"depart":"arrive";
-    QString lang = tr("nl");
+    QString lang = settings->value("stationlang", tr("nl")).toString();
 
     qDebug() << "http://api.irail.be/connections/?format=json&to=" + to + "&from=" + from + "&date=" + urlDate + "&time=" + urlTime + "&timeSel=" + timeSelector + "&lang=" + lang;
 

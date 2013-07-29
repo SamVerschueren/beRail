@@ -1,9 +1,9 @@
 1
-19
-data/stations.json
+20
 data/stations_de.json
 data/stations_en.json
 data/stations_fr.json
+data/stations_nl.json
 DetailResultPage.qml
 DisruptionPage.qml
 FavoritesPage.qml
@@ -18,4 +18,5 @@ images/start.png
 main.qml
 RoutePage.qml
 SearchResultPage.qml
+SettingsSheet.qml
 StationPicker.qml

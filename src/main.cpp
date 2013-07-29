@@ -32,7 +32,7 @@ void myMessageOutput(QtMsgType type, const char *msg)
 
 Q_DECL_EXPORT int main(int argc, char **argv)
 {
-	qInstallMsgHandler(myMessageOutput);
+	//qInstallMsgHandler(myMessageOutput);
     // this is where the server is started etc
     Application app(argc, argv);
 

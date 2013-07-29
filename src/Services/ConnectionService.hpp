@@ -20,6 +20,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QList>
+#include <QSettings>
 #include "Station.hpp"
 #include "ViaStation.hpp"
 #include "Connection.hpp"
@@ -32,6 +33,7 @@ class ConnectionService : public QObject {
 
     private:
         QNetworkAccessManager *networkAccessManager;
+        QSettings* settings;
 
         // private methods
         Connection* toConnection(const QVariantMap &data) const;

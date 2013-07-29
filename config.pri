@@ -14,6 +14,7 @@ device {
                  $$quote($$BASEDIR/src/Services/StationService.cpp) \
                  $$quote($$BASEDIR/src/ViewModels/DisruptionsViewModel.cpp) \
                  $$quote($$BASEDIR/src/ViewModels/FavoritesViewModel.cpp) \
+                 $$quote($$BASEDIR/src/ViewModels/MainViewModel.cpp) \
                  $$quote($$BASEDIR/src/ViewModels/RouteViewModel.cpp) \
                  $$quote($$BASEDIR/src/ViewModels/StationViewModel.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
@@ -29,6 +30,7 @@ device {
                  $$quote($$BASEDIR/src/Services/StationService.hpp) \
                  $$quote($$BASEDIR/src/ViewModels/DisruptionsViewModel.hpp) \
                  $$quote($$BASEDIR/src/ViewModels/FavoritesViewModel.hpp) \
+                 $$quote($$BASEDIR/src/ViewModels/MainViewModel.hpp) \
                  $$quote($$BASEDIR/src/ViewModels/RouteViewModel.hpp) \
                  $$quote($$BASEDIR/src/ViewModels/StationViewModel.hpp)
 
@@ -46,6 +48,7 @@ device {
                  $$quote($$BASEDIR/src/Services/StationService.cpp) \
                  $$quote($$BASEDIR/src/ViewModels/DisruptionsViewModel.cpp) \
                  $$quote($$BASEDIR/src/ViewModels/FavoritesViewModel.cpp) \
+                 $$quote($$BASEDIR/src/ViewModels/MainViewModel.cpp) \
                  $$quote($$BASEDIR/src/ViewModels/RouteViewModel.cpp) \
                  $$quote($$BASEDIR/src/ViewModels/StationViewModel.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
@@ -61,6 +64,7 @@ device {
                  $$quote($$BASEDIR/src/Services/StationService.hpp) \
                  $$quote($$BASEDIR/src/ViewModels/DisruptionsViewModel.hpp) \
                  $$quote($$BASEDIR/src/ViewModels/FavoritesViewModel.hpp) \
+                 $$quote($$BASEDIR/src/ViewModels/MainViewModel.hpp) \
                  $$quote($$BASEDIR/src/ViewModels/RouteViewModel.hpp) \
                  $$quote($$BASEDIR/src/ViewModels/StationViewModel.hpp)
 
@@ -81,6 +85,7 @@ simulator {
                  $$quote($$BASEDIR/src/Services/StationService.cpp) \
                  $$quote($$BASEDIR/src/ViewModels/DisruptionsViewModel.cpp) \
                  $$quote($$BASEDIR/src/ViewModels/FavoritesViewModel.cpp) \
+                 $$quote($$BASEDIR/src/ViewModels/MainViewModel.cpp) \
                  $$quote($$BASEDIR/src/ViewModels/RouteViewModel.cpp) \
                  $$quote($$BASEDIR/src/ViewModels/StationViewModel.cpp) \
                  $$quote($$BASEDIR/src/main.cpp)
@@ -96,6 +101,7 @@ simulator {
                  $$quote($$BASEDIR/src/Services/StationService.hpp) \
                  $$quote($$BASEDIR/src/ViewModels/DisruptionsViewModel.hpp) \
                  $$quote($$BASEDIR/src/ViewModels/FavoritesViewModel.hpp) \
+                 $$quote($$BASEDIR/src/ViewModels/MainViewModel.hpp) \
                  $$quote($$BASEDIR/src/ViewModels/RouteViewModel.hpp) \
                  $$quote($$BASEDIR/src/ViewModels/StationViewModel.hpp)
 

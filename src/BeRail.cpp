@@ -1,9 +1,9 @@
-// Default empty project template
 #include "BeRail.hpp"
 
 #include <bb/cascades/Application>
 #include <bb/cascades/QmlDocument>
 #include <bb/cascades/AbstractPane>
+#include "MainViewModel.hpp"
 #include "StationViewModel.hpp"
 #include "RouteViewModel.hpp"
 #include "FavoritesViewModel.hpp"
@@ -15,6 +15,7 @@ using namespace bb::cascades;
 
 BeRail::BeRail(bb::cascades::Application *app) : QObject(app)
 {
+    qmlRegisterType<MainViewModel>("be.rail.viewmodels", 1, 0, "MainViewModel");
     qmlRegisterType<StationViewModel>("be.rail.viewmodels", 1, 0, "StationViewModel");
     qmlRegisterType<RouteViewModel>("be.rail.viewmodels", 1, 0, "RouteViewModel");
     qmlRegisterType<FavoritesViewModel>("be.rail.viewmodels", 1, 0, "FavoritesViewModel");

@@ -15,19 +15,19 @@ using namespace bb::data;
  *
  * @param parent The parent object. Mostly the object that created this one.
  */
-StationService::StationService(QObject *parent = 0) : QObject(parent) {
-
+StationService::StationService() {
+    this->settings = new QSettings("samver", "beRail", this);
 }
 
 /**
  * Delete all the resources used in the applicaton.
  */
 StationService::~StationService() {
-
+    delete settings;
 }
 
 /**
- * Loads the data from the datasource. The datasource bould be a regular
+ * Loads the data from the datasource. The datasource would be a regular
  * json file, or it could be data from the server.
  *
  * When the data is loaded, the findAllStationsCompleted signal is emitted.
@@ -35,13 +35,15 @@ StationService::~StationService() {
 void StationService::load() {
     JsonDataAccess jda;
 
-    QString fileName = tr("stations.json");
+    QString fileName = QString("stations_%1.json").arg(settings->value("stationlang", tr("nl")).toString());
 
     QVariantMap data = jda.load("app/native/assets/data/" + fileName).toMap();
 
     QVariantList l = data.value("station").value<QVariantList>();
 
-    Q_FOREACH(const QVariant &station, l) {
+    resultList.clear();
+
+    foreach(const QVariant &station, l) {
         QString name(station.value<QVariantMap>().value("name").value<QString>());
 
         resultList.append(name);

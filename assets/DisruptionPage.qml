@@ -24,7 +24,9 @@ Page {
                     type: "item"
 
                     Container {
-                        background: ListItem.active ? Color.create("#CC00A8DF") : (ListItem.selected ? Color.create("#00A8DF") : Color.Transparent)
+                        id: root
+                        layout: DockLayout {
+                        }
 
                         contextActions: [
                             ActionSet {
@@ -33,7 +35,7 @@ Page {
                                 actions: [
                                     InvokeActionItem {
                                         id: invoker
-                                        data: ListItemData.title + " #beRail"
+                                        data: ListItemData.description.trim() + " #beRail"
                                         query {
                                             mimeType: "text/plain"
                                             invokeActionId: "bb.action.SHARE"
@@ -44,36 +46,78 @@ Page {
                         ]
 
                         Container {
+                            id: background
+                            background: Color.create("#ff00a7de")
+                            verticalAlignment: VerticalAlignment.Fill
                             horizontalAlignment: HorizontalAlignment.Fill
-                            topPadding: 10.0
-                            leftPadding: 10.0
-                            rightPadding: 10.0
-                            bottomPadding: 10.0
-                            layout: StackLayout { }
-                            
-                            Label {
-                                text: ListItemData.title
-                                multiline: true
-                                textStyle.fontWeight: FontWeight.W400
-                            }
-                            
-                            Label {
-                                text: ListItemData.description
-                                multiline: true
-                                textStyle.fontWeight: FontWeight.W100
-                            }
-                            
-                            Label {
-                                text: Qt.formatDateTime(ListItemData.date, "dd MMM yyyy hh:mm")
-                                horizontalAlignment: HorizontalAlignment.Right
-                                textStyle.color: Color.Gray
-                                textStyle.fontWeight: FontWeight.W100
-                            }
+                            opacity: root.ListItem.active || root.ListItem.selected ? 0.4 : 0
                         }
+
                         Container {
-                            preferredHeight: 2
-                            preferredWidth: 800
-                            background: Color.create("#eeeeee")
+                            Container {
+                                preferredHeight: 5
+                                background: root.ListItem.active || root.ListItem.selected ? Color.create("#ff00a7de") : Color.Transparent
+                                horizontalAlignment: HorizontalAlignment.Fill
+                            }
+
+                            Container {
+                                layout: StackLayout {
+                                    orientation: LayoutOrientation.LeftToRight
+                                }
+
+                                Container {
+                                    preferredWidth: 5
+                                    background: root.ListItem.active || root.ListItem.selected ? Color.create("#ff00a7de") : Color.Transparent
+                                    verticalAlignment: VerticalAlignment.Fill
+                                }
+
+                                Container {
+                                    topPadding: 5
+                                    leftPadding: 5
+                                    rightPadding: 5
+                                    bottomPadding: 5
+                                    layoutProperties: StackLayoutProperties {
+                                        spaceQuota: 1.0
+                                    }
+                                    layout: StackLayout {
+                                    }
+
+                                    Label {
+                                        text: ListItemData.title
+                                        multiline: true
+                                        textStyle.fontWeight: FontWeight.W400
+                                    }
+
+                                    Label {
+                                        text: ListItemData.description
+                                        multiline: true
+                                        textStyle.fontWeight: FontWeight.W100
+                                    }
+
+                                    Label {
+                                        text: Qt.formatDateTime(ListItemData.date, "dd MMM yyyy hh:mm")
+                                        horizontalAlignment: HorizontalAlignment.Right
+                                        textStyle.color: Color.Gray
+                                        textStyle.fontWeight: FontWeight.W100
+                                    }
+                                }
+
+                                Container {
+                                    preferredWidth: 5
+                                    background: root.ListItem.active || root.ListItem.selected ? Color.create("#ff00a7de") : Color.Transparent
+                                    verticalAlignment: VerticalAlignment.Fill
+                                }
+                            }
+
+                            Container {
+                                preferredHeight: 5
+                                background: root.ListItem.active || root.ListItem.selected ? Color.create("#ff00a7de") : Color.Transparent
+                                horizontalAlignment: HorizontalAlignment.Fill
+                            }
+
+                            Divider {
+                                topMargin: -5.0
+                            }
                         }
                     }
                 }

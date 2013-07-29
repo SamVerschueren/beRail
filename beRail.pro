@@ -8,5 +8,5 @@ include(config.pri)
 
 lupdate_inclusion {
     SOURCES += \
-        $$BASEDIR/../src/*.cpp $$BASEDIR/../assets/*.qml $$BASEDIR/../src/Services/*.cpp
+        $$BASEDIR/../src/*.cpp $$BASEDIR/../assets/*.qml $$BASEDIR/../src/Services/*.cpp $$BASEDIR/../src/ViewModels/*.cpp
 }

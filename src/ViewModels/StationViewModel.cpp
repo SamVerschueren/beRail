@@ -6,8 +6,16 @@
  */
 #include "StationViewModel.hpp"
 
+StationViewModel::StationViewModel() {
+    this->dataModel = new GroupDataModel(QStringList() << "name");
+    this->stationService = new StationService();
+
+    connect(this->stationService, SIGNAL(findAllStationsCompleted(QList<QString>)), this, SLOT(findAllStationsCompleted(QList<QString>)));
+}
+
 StationViewModel::~StationViewModel() {
     delete dataModel;
+    delete stationService;
 }
 
 /**
@@ -21,12 +29,6 @@ StationViewModel::~StationViewModel() {
  * @return The datamodel that can be shown in the UI.
  */
 GroupDataModel* StationViewModel::getDataModel() {
-    // If the viewmodel does not have any stations yet, start loading them
-    if(stations.size() == 0) {
-        connect(&stationService, SIGNAL(findAllStationsCompleted(QList<QString>)), this, SLOT(findAllStationsCompleted(QList<QString>)));
-        stationService.load();
-    }
-
     return dataModel;
 }
 
@@ -50,9 +52,9 @@ void StationViewModel::setFilter(const QString &filter) {
     if(this->filter != filter) {
         this->filter = filter;
 
-        emit filterChanged(filter);
-
         applyFilter();
+
+        emit filterChanged(filter);
     }
 }
 
@@ -65,14 +67,16 @@ void StationViewModel::setFilter(const QString &filter) {
 void StationViewModel::findAllStationsCompleted(const QList<QString> &stations) {
     this->stations = stations;
 
-    disconnect(&stationService, SIGNAL(findAllStationsCompleted(QList<QString>)), this, SLOT(findAllStationsCompleted(QList<QString>)));
+    dataModel->clear();
 
-    Q_FOREACH(const QString &name, stations) {
+    foreach(const QString &name, stations) {
         QVariantMap map;
         map["name"] = name;
 
         dataModel->insert(map);
     }
+
+    emit dataModelChanged(dataModel);
 }
 
 /**
@@ -82,7 +86,7 @@ void StationViewModel::findAllStationsCompleted(const QList<QString> &stations) 
 void StationViewModel::applyFilter() {
     dataModel->clear();
 
-    Q_FOREACH(const QString &name, stations) {
+    foreach(const QString &name, stations) {
         if(name.indexOf(filter.trimmed(), 0, Qt::CaseInsensitive) != -1) {
             QVariantMap map;
             map["name"] = name;
@@ -90,4 +94,12 @@ void StationViewModel::applyFilter() {
             dataModel->insert(map);
         }
     }
+
+    emit dataModelChanged(dataModel);
+}
+
+Q_INVOKABLE void StationViewModel::loadStations() {
+    qDebug() << "StationViewModel::loadStations";
+
+    stationService->load();
 }

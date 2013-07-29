@@ -4,6 +4,7 @@ import be.rail.viewmodels 1.0
 
 Page {
     id: favPage
+    
     Container {
         layout: DockLayout { }
 
@@ -16,8 +17,8 @@ Page {
                     type: "item"
 
                     Container {
-                        id: mainContainer
-                        background: ListItem.active ? Color.create("#CC00A8DF") : (ListItem.selected ? Color.create("#00A8DF") : Color.Transparent)
+                        id: root
+                        layout: DockLayout { }
 
                         contextActions: [
                             ActionSet {
@@ -53,49 +54,97 @@ Page {
                         ]
 
                         Container {
+                            id: background
+                            background: Color.create("#ff00a7de")
+                            verticalAlignment: VerticalAlignment.Fill
                             horizontalAlignment: HorizontalAlignment.Fill
-                            topPadding: 10.0
-                            leftPadding: 10.0
-                            rightPadding: 10.0
-                            bottomPadding: 10.0
-                            layout: StackLayout {
-                                orientation: LayoutOrientation.LeftToRight
+                            opacity: root.ListItem.active || root.ListItem.selected ? 0.4 : 0
+                        }
+                        
+                        Container {
+                            Container {
+                                preferredHeight: 5
+                                background: root.ListItem.active || root.ListItem.selected ? Color.create("#ff00a7de") : Color.Transparent
+                                horizontalAlignment: HorizontalAlignment.Fill
                             }
 
                             Container {
                                 layout: StackLayout {
                                     orientation: LayoutOrientation.LeftToRight
                                 }
-                                
+
                                 Container {
-                                    rightMargin: 20
-                                    Label {
-                                        text: qsTr("Van") + ":"
-                                        textStyle.color: Color.LightGray
+                                    preferredWidth: 5
+                                    background: root.ListItem.active || root.ListItem.selected ? Color.create("#ff00a7de") : Color.Transparent
+                                    verticalAlignment: VerticalAlignment.Fill
+                                }
+
+                                Container {
+                                    layoutProperties: StackLayoutProperties {
+                                        spaceQuota: 1.0
                                     }
-                                    Label {
-                                        text: qsTr("Tot") + ":"
-                                        textStyle.color: Color.LightGray
+
+                                    Container {
+                                        horizontalAlignment: HorizontalAlignment.Fill
+                                        topPadding: 10.0
+                                        leftPadding: 10.0
+                                        rightPadding: 10.0
+                                        bottomPadding: 10.0
+                                        layout: StackLayout {
+                                            orientation: LayoutOrientation.LeftToRight
+                                        }
+
+                                        Container {
+                                            layout: StackLayout {
+                                                orientation: LayoutOrientation.LeftToRight
+                                            }
+
+                                            Container {
+                                                rightMargin: 20
+                                                Label {
+                                                    text: qsTr("Van") + ":"
+                                                    textStyle.color: Color.LightGray
+                                                }
+                                                Label {
+                                                    text: qsTr("Tot") + ":"
+                                                    textStyle.color: Color.LightGray
+                                                }
+                                            }
+                                            Container {
+                                                Label {
+                                                    text: ListItemData.from
+                                                }
+                                                Label {
+                                                    text: ListItemData.to
+                                                }
+                                            }
+                                        }
                                     }
                                 }
+
                                 Container {
-                                    Label {
-                                        text: ListItemData.from
-                                    }
-                                    Label {
-                                        text: ListItemData.to
-                                    }
+                                    preferredWidth: 5
+                                    background: root.ListItem.active || root.ListItem.selected ? Color.create("#ff00a7de") : Color.Transparent
+                                    verticalAlignment: VerticalAlignment.Fill
                                 }
                             }
-                        }
-                        Container {
-                            preferredHeight: 2
-                            preferredWidth: 800
-                            background: Color.create("#eeeeee")
+
+                            Container {
+                                preferredHeight: 5
+                                background: root.ListItem.active || root.ListItem.selected ? Color.create("#ff00a7de") : Color.Transparent
+                                horizontalAlignment: HorizontalAlignment.Fill
+                            }
+
+                            Divider {
+                                topMargin: -5.0
+                            }
                         }
                     }
                 }
             ]
+            onActivationChanged: {
+                
+            }
             onTriggered: {
                 // This is invoked when the user short presses the item
                 var selectedItem = dataModel.data(indexPath);

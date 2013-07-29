@@ -9,6 +9,7 @@
 #define STATIONSERVICE_HPP_
 
 #include <QObject>
+#include <QSettings>
 
 class StationService: public QObject {
     Q_OBJECT
@@ -18,9 +19,10 @@ class StationService: public QObject {
 
     private:
         QList<QString> resultList;
+        QSettings* settings;
 
     public:
-        StationService(QObject *parent);
+        StationService();
         ~StationService();
 
         void load();

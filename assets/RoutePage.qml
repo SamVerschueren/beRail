@@ -112,9 +112,6 @@ NavigationPane {
         }
 
         attachedObjects: [
-            StationPicker {
-                id: stationSheet
-            },
             RouteViewModel {
                 id: routeVM
                 from: cmdFrom.text != qsTr("Van") ? cmdFrom.text : ""

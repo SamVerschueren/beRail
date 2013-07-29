@@ -1,10 +1,18 @@
-// Default empty project template
 import bb.cascades 1.0
+import be.rail.viewmodels 1.0
 import be.rail.services 1.0
 
 TabbedPane {
     id: rootTabbedPane
     showTabsOnActionBar: true
+
+    Menu.definition: MenuDefinition {
+        settingsAction: SettingsActionItem {
+           onTriggered: {
+               settingsSheet.open();
+           }
+        }
+    }
 
     Tab {
         id: routeTab
@@ -25,15 +33,6 @@ TabbedPane {
         }
     }
 
-    /*Tab {
-        title: qsTr("Liveboard")
-        
-
-        Page {
-            
-        }
-    }*/
-
     Tab {
         title: qsTr("Storingen")
         imageSource: "asset:///images/bb_action_disturbance.png"
@@ -44,11 +43,23 @@ TabbedPane {
     }
 
     attachedObjects: [
+        MainViewModel {
+            id: mainViewModel
+            onStationLanguageChanged: {
+                stationSheet.reload();
+            }
+        },
+        StationPicker {
+            id: stationSheet
+        },
         FavoriteService {
             id: favoriteService
         },
         DisruptionService {
             id: disruptionService
+        },
+        SettingsSheet {
+            id: settingsSheet
         }
     ]
 
